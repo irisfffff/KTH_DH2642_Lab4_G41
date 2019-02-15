@@ -3,6 +3,8 @@ import { Route } from "react-router-dom";
 import Welcome from "./Welcome/Welcome";
 import modelInstance from "./data/DinnerModel";
 import SelectDish from "./SelectDish/SelectDish";
+import Confirm from "./Confirm/Confirm";
+import Print from "./Print/Print";
 import "./App.css";
 
 class App extends Component {
@@ -16,16 +18,24 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <header className="App-header">
+        <header className="App-header myBg text-center pb-3 pt-3">
           <h1 className="App-title">{this.state.title}</h1>
-
-          {/* We rended diffrent component based on the path */}
-          <Route exact path="/" component={Welcome} />
-          <Route
-            path="/search"
-            render={() => <SelectDish model={modelInstance} />}
-          />
         </header>
+
+        {/* We rended diffrent component based on the path */}
+        <Route exact path="/" component={Welcome} />
+        <Route
+          path="/search"
+          render={() => <SelectDish model={modelInstance} />}
+        />
+        <Route
+          path="/confirm"
+          render={() => <Confirm model={modelInstance} />}
+        />
+        <Route
+          path="/print"
+          render={() => <Print model={modelInstance} />}
+        />
       </div>
     );
   }

@@ -1,0 +1,10 @@
+.box {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.brickText {
+  color: #A44F46;
+}

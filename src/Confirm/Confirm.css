@@ -1,0 +1,15 @@
+@media(min-width:768px) {
+  .goBack {
+    text-align: right;
+  }
+}
+
+@media(max-width:768px) {
+  .guests {
+    text-align: center;
+  }
+
+  .goBack {
+    text-align: center;
+  }
+}

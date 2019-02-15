@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
+import SidebarMenu from "./SidebarMenu";
 import "./Sidebar.css";
 
 class Sidebar extends Component {
@@ -39,18 +41,28 @@ class Sidebar extends Component {
 
   render() {
     return (
-      <div className="Sidebar">
+      <div className="Sidebar col-md-2 border border-dark py-2">
         <h3>This is the sidebar</h3>
-        <p>
-          People:
-          <input
-            type="number"
-            value={this.state.numberOfGuests}
-            onChange={this.onNumberOfGuestsChanged}
-          />
+        <div className="form-group row">
+          <label className="col-sm col-form-label m-2">People:</label>
+          <div className="col-sm col-form-label m-2">
+            <input
+              className="form-control"
+              type="number"
+              value={this.state.numberOfGuests}
+              onChange={this.onNumberOfGuestsChanged}
+            />
+          </div>
           <br />
-          Total number of guests: {this.state.numberOfGuests}
-        </p>
+          <p className="col-12">Total number of guests: {this.state.numberOfGuests}</p>
+        </div>
+        <SidebarMenu menu={this.props.model.getFullMenu()} />
+        {/*Link to Confirm Screen*/}
+        <Link to="/confirm">
+          <div className="text-center">
+            <button className="btn btn-warning">Confirm Dinner</button>
+          </div>
+        </Link>
       </div>
     );
   }
