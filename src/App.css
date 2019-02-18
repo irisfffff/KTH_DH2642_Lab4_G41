@@ -1,3 +1,7 @@
 .myBg {
   background-color: #E5E5E5;
 }
+
+select {
+  text-transform: capitalize;
+}

@@ -1,0 +1,19 @@
+.wrapper {
+  display: grid;
+  grid-template-rows: 200px auto;
+  grid-auto-columns: 200px;
+  justify-items: center;
+  align-items: center;
+  padding: 0px 0px;
+}
+
+.wrapper img {
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+}
+
+.wrapper div {
+  word-wrap: break-word;
+  width: 200px;
+}
