@@ -29,7 +29,6 @@ class SidebarMenu extends Component {
     const { cookies } = this.props;
     let menu = cookies.get("menu");
     if(menu !== undefined) {
-      console.log(menu);
       Promise.all(menu.map(dishId => this.props.model.getDish(dishId))).then(dishes => {
           dishes.forEach(dish => this.props.model.addDishToMenu(dish));
           this.setState({

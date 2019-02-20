@@ -82,7 +82,8 @@ class DinnerModel extends ObservableModel {
     const url = `${DinnerModel.BASE_URL}/recipes/search`;
     let searchUrl = new URL(url);
     searchUrl.search = new URLSearchParams(params).toString();
-    return fetch(searchUrl.toString(), DinnerModel.HTTP_OPTIONS).then(this.processResponse).then(response => {
+    return fetch(searchUrl.toString(), DinnerModel.HTTP_OPTIONS).then(this.processResponse)
+        .then(response => {
             if(response.results)
                 return response.results;
             else

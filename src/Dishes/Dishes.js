@@ -1,5 +1,4 @@
 import React, {Component} from "react";
-import {Redirect} from "react-router";
 // Alternative to passing the model as the component property,
 // we can import the model instance directly
 import "./Dishes.css";

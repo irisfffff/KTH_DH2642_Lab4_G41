@@ -34,7 +34,6 @@ class DishDetail extends Component {
     }
 
     update(){
-        console.log("ay");
         this.forceUpdate();
     }
 
@@ -44,7 +43,7 @@ class DishDetail extends Component {
         let menuId = [];
         menu.map((dish) => menuId.push(dish.id));
         const { cookies } = this.props;
-        cookies.set("menu", menuId, { path: "/", maxAge: 30 });
+        cookies.set("menu", menuId, { path: "/", maxAge: 300 });
     }
 
     render() {
@@ -70,7 +69,8 @@ class DishDetail extends Component {
 
                 let ingredientList = dish["extendedIngredients"].map((ingredient) =>
                     <li className="row" key={ingredient.name}>
-                        <span className="col-2">{ingredient.amount + " " + ingredient.unit}</span>
+                        <span className="col-2">{ingredient.amount * this.props.model.getNumberOfGuests()
+                        + " " + ingredient.unit}</span>
                         <span className="col-6">{ingredient.name}</span>
                         <span className="col-2">SEK</span>
                         <span className="col-2">{(1 * this.props.model.getNumberOfGuests())
@@ -102,7 +102,7 @@ class DishDetail extends Component {
                                 <div className="border border-dark p-3">
                                     <h4 className="text-uppercase">
                                         Ingredients for <span>{this.props.model.getNumberOfGuests()}</span> people
-                                    </h4>F
+                                    </h4>
 
                                     <hr/>
                                     <ul><em>Ingredients list</em>
