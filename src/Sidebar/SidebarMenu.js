@@ -5,24 +5,24 @@ function MenuItem(props) {
   return (
     <li className="row m-1 myBg border border-dark">
       <div className="col-sm brickText text-uppercase">
-        {dish.name}
+        {dish.title}
       </div>
-      <div className="col-sm brickText text-uppercase">
-        {dish.pricePerServing.toFixed(2)}
+      <div className="col-sm brickText text-right">
+        {props.model.getDishPrice(dish).toFixed(2)}
       </div>
     </li>
   );
+
+
+
 }
 
 class SidebarMenu extends Component {
-  /*constructor(props) {
-    super(props);
-  }*/
 
   render() {
-    const menu = this.props.menu;
+    const menu = this.props.model.getFullMenu();
     const menuItems = menu.map((dish) =>
-      <MenuItem key = {dish.id.toString()} dish = {dish} />
+      <MenuItem key = {dish.id.toString()} dish = {dish} model={this.props.model}/>
     );
 
     return (
@@ -34,7 +34,7 @@ class SidebarMenu extends Component {
         <ul className="list-unstyled mt-1 mb-3">
           {menuItems}
         </ul>
-        <h5 className="text-right m-2 brickText">SEK 0.00</h5>
+        <h5 className="text-right m-2 brickText">SEK {this.props.model.getTotalMenuPrice().toFixed(2)}</h5>
       </div>
     );
   }

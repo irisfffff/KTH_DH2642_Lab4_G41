@@ -12,7 +12,6 @@ class Dishes extends Component {
         super(props);
         // We create the state to store the various statuses
         // e.g. API data loading or error
-
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleDishSelect = this.handleDishSelect.bind(this);
 
@@ -20,7 +19,7 @@ class Dishes extends Component {
             "main course", "side dish", "dessert", "appetizer", "salad",
             "bread", "breakfast", "soup", "beverage", "sauce", "drink"
         ];
-        this._selectedDishId = -1;
+
         this._filter = {type: "", query: ""};
         this.state = {status: "LOADING", toDishDetail: false};
     }
@@ -61,8 +60,6 @@ class Dishes extends Component {
 
     handleDishSelect(event) {
         event.preventDefault();
-        //this.props.model.setSelectedDishId(this._selectedDishId);
-        console.log( (event.target.tagName === "A" ? event.target.id : event.target.parentNode.id))
         this.setState({
             toDishDetail: true,
             _selectedDishId: (event.target.tagName === "A" ? event.target.id : event.target.parentNode.id)

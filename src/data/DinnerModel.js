@@ -6,8 +6,6 @@ class DinnerModel extends ObservableModel {
     super();
     this._numberOfGuests = 4;
     this._menu = [];
-    //this._selectedDishId = -1;
-    //this._selectedDish = {};
   }
 
   static BASE_URL = "http://sunset.nada.kth.se:8080/iprog/group/41";
@@ -35,23 +33,6 @@ class DinnerModel extends ObservableModel {
     this._numberOfGuests = num;
     this.notifyObservers();
   }
-
-  /**
-   * Get selected dish id
-   * @returns {number}
-   */
-  /*getSelectedDishId() {
-    return this._selectedDishId;
-  }*/
-
-  /**
-   * Set selected dish id
-   * @param {number} num
-   */
-  /*setSelectedDishId(num) {
-    this._selectedDishId = num;
-    //console.log(this._selectedDishId);
-  }*/
 
   getFullMenu() {
     return this._menu;

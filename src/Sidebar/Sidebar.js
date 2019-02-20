@@ -42,7 +42,6 @@ class Sidebar extends Component {
   render() {
     return (
       <div className="Sidebar col-md-2 border border-dark py-2">
-        <h3>This is the sidebar</h3>
         <div className="form-group row">
           <label className="col-sm col-form-label m-2">People:</label>
           <div className="col-sm col-form-label m-2">
@@ -54,9 +53,8 @@ class Sidebar extends Component {
             />
           </div>
           <br />
-          <p className="col-12">Total number of guests: {this.state.numberOfGuests}</p>
         </div>
-        <SidebarMenu menu={this.props.model.getFullMenu()} />
+        <SidebarMenu model={this.props.model} />
         {/*Link to Confirm Screen*/}
         <Link to="/confirm">
           <div className="text-center">
