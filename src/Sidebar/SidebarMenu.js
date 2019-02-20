@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import Loader from "../Loader/Loader";
 
 function MenuItem(props) {
   const dish = props.dish;
@@ -18,12 +19,49 @@ function MenuItem(props) {
 }
 
 class SidebarMenu extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {status: "LOADING"};
+  }
+
+  componentDidMount() {
+    const { cookies } = this.props;
+    let menu = cookies.get("menu");
+    if(menu !== undefined) {
+      console.log(menu);
+      Promise.all(menu.map(dishId => this.props.model.getDish(dishId))).then(dishes => {
+          dishes.forEach(dish => this.props.model.addDishToMenu(dish));
+          this.setState({
+              status: "LOADED"
+          });
+      });
+    }
+    else {
+      this.setState({
+        status: "LOADED"
+      });
+    }
+  }
 
   render() {
-    const menu = this.props.model.getFullMenu();
-    const menuItems = menu.map((dish) =>
-      <MenuItem key = {dish.id.toString()} dish = {dish} model={this.props.model}/>
-    );
+
+    let menuItems = null;
+
+    switch (this.state.status) {
+      case "LOADING":
+        menuItems = <Loader/>;
+        break;
+      case "LOADED":
+        const menu = this.props.model.getFullMenu();
+        menuItems = menu.map((dish) =>
+          <MenuItem key = {dish.id.toString()} dish = {dish} model={this.props.model}/>
+        );
+        break;
+      default:
+        menuItems = <b>Failed to load data, please try again</b>;
+        break;
+    }
 
     return (
       <div className="SidebarMenu">
