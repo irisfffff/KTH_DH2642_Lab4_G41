@@ -1,4 +1,5 @@
 class ObservableModel {
+
   constructor() {
     this._observers = [];
   }

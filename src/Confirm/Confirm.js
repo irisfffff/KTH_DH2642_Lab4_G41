@@ -3,9 +3,9 @@ import { Link } from "react-router-dom";
 import "./Confirm.css";
 
 class Confirm extends Component {
-  constructor(props) {
+  /*constructor(props) {
     super(props);
-  }
+  }*/
 
   render() {
     return (

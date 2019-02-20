@@ -15,15 +15,14 @@ function MenuItem(props) {
 }
 
 class SidebarMenu extends Component {
-  constructor(props) {
+  /*constructor(props) {
     super(props);
-  }
+  }*/
 
   render() {
     const menu = this.props.menu;
     const menuItems = menu.map((dish) =>
-      <MenuItem key = {dish.id.toString()}
-                dish = {dish} />
+      <MenuItem key = {dish.id.toString()} dish = {dish} />
     );
 
     return (

@@ -2,3 +2,6 @@ Render dish detail dynamically
 Add dish to menu
 Render menu in sidebar dynamically
 Confirm&Print page
+
+
+Enter event on search

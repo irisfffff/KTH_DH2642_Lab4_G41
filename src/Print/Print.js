@@ -2,9 +2,9 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 
 class Print extends Component {
-  constructor(props) {
+  /*constructor(props) {
     super(props);
-  }
+  }*/
 
   render() {
     return (
@@ -21,6 +21,7 @@ class Print extends Component {
       </div>
     );
   }
+
 }
 
 export default Print;

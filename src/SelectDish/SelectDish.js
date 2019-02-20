@@ -10,17 +10,16 @@ class SelectDish extends Component {
   render() {
     return (
       <div className="SelectDish row no-gutters">
-        <h2 className="text-center col-12">This is the Select Dish screen</h2>
 
         {/* We pass the model as property to the Sidebar component */}
         <Sidebar model={this.props.model} />
         <Route
           exact path="/search"
-          render={() => <Dishes model={this.props.model} />}
+          render={(props) => <Dishes {...props} model={this.props.model} />}
         />
         <Route
-          path="/search/recipe"
-          render={() => <DishDetail model={this.props.model} />}
+          path="/search/recipe/:id"
+          render={(props) => <DishDetail {...props} model={this.props.model}  />}
         />
       </div>
     );
