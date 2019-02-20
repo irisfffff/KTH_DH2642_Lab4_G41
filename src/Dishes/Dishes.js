@@ -2,7 +2,6 @@ import React, {Component} from "react";
 import {Redirect} from "react-router";
 // Alternative to passing the model as the component property,
 // we can import the model instance directly
-import modelInstance from "../data/DinnerModel";
 import "./Dishes.css";
 import DishItem from "../DishItem/DishItem";
 import Loader from "../Loader/Loader";
@@ -25,7 +24,7 @@ class Dishes extends Component {
     }
 
     updateDishItems() {
-        modelInstance.getAllDishes(this._filter)
+        this.props.model.getAllDishes(this._filter)
             .then(dishes => {
                 this.setState({
                     status: "LOADED",

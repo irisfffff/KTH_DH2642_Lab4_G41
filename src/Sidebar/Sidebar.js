@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import { Cookies } from "react-cookie";
 import SidebarMenu from "./SidebarMenu";
 import "./Sidebar.css";
 
@@ -69,7 +68,7 @@ class Sidebar extends Component {
           </div>
           <br />
         </div>
-        <SidebarMenu model={this.props.model} />
+        <SidebarMenu cookies={this.props.cookies} model={this.props.model} />
         {/*Link to Confirm Screen*/}
         <Link to="/confirm">
           <div className="text-center">

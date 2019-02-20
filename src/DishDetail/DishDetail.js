@@ -1,7 +1,5 @@
 import React, {Component} from "react";
 import {Link} from "react-router-dom";
-import { Cookies } from "react-cookie";
-import modelInstance from "../data/DinnerModel";
 import Loader from "../Loader/Loader";
 
 class DishDetail extends Component {
@@ -19,7 +17,7 @@ class DishDetail extends Component {
         this.props.model.addObserver(this);
         const { id } = this.props.match.params;
 
-        modelInstance.getDish(id)
+        this.props.model.getDish(id)
             .then(dish => {
                 this.setState({
                     status: "LOADED",
@@ -42,6 +40,11 @@ class DishDetail extends Component {
 
     addDishToMenu(){
         this.props.model.addDishToMenu(this.state.dish);
+        let menu = this.props.model.getFullMenu();
+        let menuId = [];
+        menu.map((dish) => menuId.push(dish.id));
+        const { cookies } = this.props;
+        cookies.set("menu", menuId, { path: "/", maxAge: 30 });
     }
 
     render() {
