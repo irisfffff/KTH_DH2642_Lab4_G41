@@ -14,7 +14,6 @@ class Dishes extends Component {
         // We create the state to store the various statuses
         // e.g. API data loading or error
         this.handleSubmit = this.handleSubmit.bind(this);
-        this.handleDishSelect = this.handleDishSelect.bind(this);
 
         this._dishTypes = [
             "main course", "side dish", "dessert", "appetizer", "salad",
@@ -22,7 +21,7 @@ class Dishes extends Component {
         ];
 
         this._filter = {type: "", query: ""};
-        this.state = {status: "LOADING", toDishDetail: false};
+        this.state = {status: "LOADING"};
     }
 
     updateDishItems() {
@@ -35,7 +34,8 @@ class Dishes extends Component {
             })
             .catch(() => {
                 this.setState({
-                    status: "ERROR"
+                    status: "ERROR",
+                    dishes: null
                 });
             });
     }
@@ -59,19 +59,7 @@ class Dishes extends Component {
         this.updateDishItems();
     }
 
-    handleDishSelect(event) {
-        event.preventDefault();
-        this.setState({
-            toDishDetail: true,
-            _selectedDishId: (event.target.tagName === "A" ? event.target.id : event.target.parentNode.id)
-        });
-    }
-
     render() {
-        if (this.state.toDishDetail === true) {
-            return <Redirect to={'/search/dish/' + this.state._selectedDishId}/>
-        }
-
         let dishTypes = this._dishTypes.map(type => <option key={type} value={type}>{type}</option> );
         let dishesList = null;
 
@@ -84,7 +72,6 @@ class Dishes extends Component {
                 dishesList = <div className="d-flex flex-wrap">
                                 {this.state.dishes.map(dish => <DishItem dish={dish}
                                                                          key={dish.id.toString()}
-                                                                         clickHandler={this.handleDishSelect}
                                                                          model={this.props.model}
                                 />)}
                             </div>;
