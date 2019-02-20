@@ -69,7 +69,7 @@ class Dishes extends Component {
 
     render() {
         if (this.state.toDishDetail === true) {
-            return <Redirect to={'/search/recipe/' + this.state._selectedDishId}/>
+            return <Redirect to={'/search/dish/' + this.state._selectedDishId}/>
         }
 
         let dishTypes = this._dishTypes.map(type => <option key={type} value={type}>{type}</option> );

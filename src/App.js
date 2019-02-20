@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Route } from "react-router-dom";
+import { withCookies } from "react-cookie";
 import Welcome from "./Welcome/Welcome";
 import modelInstance from "./data/DinnerModel";
 import SelectDish from "./SelectDish/SelectDish";
@@ -26,7 +27,7 @@ class App extends Component {
         <Route exact path="/" component={Welcome} />
         <Route
           path="/search"
-          render={() => <SelectDish model={modelInstance} />}
+          render={() => <SelectDish cookies={this.props.cookies} model={modelInstance} />}
         />
         <Route
           path="/confirm"
@@ -41,4 +42,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default withCookies(App);

@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import { Cookies } from "react-cookie";
 import SidebarMenu from "./SidebarMenu";
 import "./Sidebar.css";
 
@@ -7,10 +8,21 @@ class Sidebar extends Component {
   constructor(props) {
     super(props);
 
-    // we put on state the properties we want to use and modify in the component
-    this.state = {
-      numberOfGuests: this.props.model.getNumberOfGuests()
-    };
+    const { cookies } = props;
+
+    let numberOfGuests = cookies.get("numberOfGuests");
+    if(numberOfGuests !== undefined) {
+      this.state = {
+        numberOfGuests: numberOfGuests
+      };
+      this.props.model.setNumberOfGuests(numberOfGuests);
+    }
+    else {
+      this.state = {
+        numberOfGuests: this.props.model.getNumberOfGuests()
+      };
+    }
+
   }
 
   // this methods is called by React lifecycle when the
@@ -36,6 +48,9 @@ class Sidebar extends Component {
 
   // our handler for the input's on change event
   onNumberOfGuestsChanged = e => {
+    const { cookies } = this.props;
+
+    cookies.set("numberOfGuests", e.target.value, { path: "/" });
     this.props.model.setNumberOfGuests(e.target.value);
   };
 
