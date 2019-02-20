@@ -16,7 +16,7 @@ class Confirm extends Component {
         return (
             <div className="Confirm">
                 <div className="row p-3 border-bottom border-dark mb-2">
-                    <h3 className="col-sm guests">My Dinner: 4 people</h3>
+                    <h3 className="col-sm guests">My Dinner: {this.props.model.getNumberOfGuests()} people</h3>
                     <div className="col-sm goBack">
                         <Link to="/search">
                             <button className="btn btn-warning btn-sm">Go back and Edit dinner</button>

@@ -66,7 +66,7 @@ class DinnerModel extends ObservableModel {
 
   //Removes dish from menu
   removeDishFromMenu(dish) {
-    let index = this._menu.findIndex(el => el === dish);
+    let index = this._menu.findIndex(el => el.id === dish.id);
     if (index !== -1)
       this._menu.splice(index, 1);
   }

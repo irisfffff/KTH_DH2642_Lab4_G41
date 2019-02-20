@@ -1,10 +1,11 @@
 import React, {Component} from "react";
 import {Redirect} from "react-router";
-// Alternative to passing the moderl as the component property,
+// Alternative to passing the model as the component property,
 // we can import the model instance directly
 import modelInstance from "../data/DinnerModel";
 import "./Dishes.css";
 import DishItem from "../DishItem/DishItem";
+import Loader from "../Loader/Loader";
 
 
 class Dishes extends Component {
@@ -77,7 +78,7 @@ class Dishes extends Component {
         // depending on the state we either generate useful message to the user or show the list of returned dishes
         switch (this.state.status) {
             case "LOADING":
-                dishesList = <em>Loading...</em>;
+                dishesList = <Loader/>;
                 break;
             case "LOADED":
                 dishesList = <div className="d-flex flex-wrap">

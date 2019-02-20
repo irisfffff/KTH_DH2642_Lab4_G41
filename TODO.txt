@@ -1,7 +1,5 @@
-Render dish detail dynamically
-Add dish to menu
-Render menu in sidebar dynamically
-Confirm&Print page
-
-
-Enter event on search
+add css to css files
+Search on enter event 
+Go back to search when adding to menu (+ keeping get params) 
+cookie storage of guests and menu (stays after refreshing)
+get params to show up in url when a search is made?

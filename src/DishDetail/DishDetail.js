@@ -1,6 +1,7 @@
 import React, {Component} from "react";
 import {Link} from "react-router-dom";
 import modelInstance from "../data/DinnerModel";
+import Loader from "../Loader/Loader";
 
 class DishDetail extends Component {
     constructor(props) {
@@ -46,7 +47,7 @@ class DishDetail extends Component {
 
         switch (this.state.status) {
             case "LOADING":
-                return (<em>Loading...</em>);
+                return (<Loader/>);
             case "ERROR":
                 return (
                     <div>
